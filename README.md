@@ -101,15 +101,12 @@ A Next.js-based dashboard application that integrates with Chapa Payment API to 
   /api
     /initialize
       route.js      # Payment initialization endpoint
-    /verify
-      route.js      # Payment verification endpoint
   /dashboard
     /admin         # Admin dashboard
     /superadmin    # Super Admin dashboard
     /user          # User dashboard
   /components      # Reusable components
   /context         # React context providers
-  /styles          # Global styles
 ```
 
 ## Dependencies
