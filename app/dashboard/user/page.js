@@ -21,6 +21,7 @@ export default function User() {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [FormLoading, setFormLoading] = useState(false);
     const [transactions, setTransactions] = useState([]);
+    const [error, setError] = useState(null);
     const [transactionsLoading, setTransactionsLoading] = useState(false);
 
     useEffect(() => {
@@ -69,7 +70,7 @@ export default function User() {
     }, []);
 
     const handleNewTransaction = (transactionData) => {
-        const url = "http://localhost:3000/api/initialize";
+        const url = "/api/initialize";
 
         const payload = {
             amount: transactionData.amount,
@@ -117,6 +118,8 @@ export default function User() {
                 window.open(data.data.checkout_url, '_blank');
             })
             .catch(error => {
+                setError(error.message);
+                setFormLoading(false);
                 console.error('Error:', error);
             });
     };
@@ -144,6 +147,7 @@ export default function User() {
                     FormLoading={FormLoading}
                 />
             </div>
+            {error && <p className="text-red-500 text-center">{error}</p>}
 
             {/* Balance Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
